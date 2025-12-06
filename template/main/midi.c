@@ -44,13 +44,15 @@ void midi_program_change(uint8_t program)
     midi_send(msg, 2);
 }
 
+
+
 void midi_task(void *arg)
 {
     // 设置音色为八音盒（Music Box = Program 10）
     midi_program_change(10);
 
     // 设置音量为 10%（MIDI CC7 = Volume）
-    uint8_t volume_msg[3] = {0xB0, 0x07, 12}; // 通道0，音量=12
+    uint8_t volume_msg[3] = {0xB0, 0x07, 30}; // 通道0，音量=12
     midi_send(volume_msg, 3);
 
     int notes[] = {72, 74, 76, 77, 79, 81, 83}; // C5 D5 E5 F5 G5 A5 B5

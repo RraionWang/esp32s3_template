@@ -1,4 +1,4 @@
-idf_component_register(SRCS "main.c" "audio_driver.c" "my_fs.c" "midi.c"
+idf_component_register(SRCS "my_ws.c" "main.c" "audio_driver.c" "my_fs.c" "midi.c" "my_ws.c"
                     INCLUDE_DIRS ".")
 
 

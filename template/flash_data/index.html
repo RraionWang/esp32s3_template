@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ESP32 Keyboard</title>
+
+<style>
+    body {
+        font-family: Arial;
+        background: #f0f0f0;
+        text-align: center;
+        padding-top: 30px;
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+    .keyboard {
+        width: 360px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .key {
+        width: 60px;
+        height: 60px;
+        margin: 6px;
+        background: white;
+        border-radius: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        cursor: pointer;
+        user-select: none;
+    }
+    .key:active {
+        background: #ffcc00;
+    }
+</style>
+
+</head>
+<body>
+
+<h2>ESP32 Web Keyboard</h2>
+
+<div class="keyboard">
+    <div class="key" onclick="sendKey('A')">A</div>
+    <div class="key" onclick="sendKey('B')">B</div>
+    <div class="key" onclick="sendKey('C')">C</div>
+    <div class="key" onclick="sendKey('D')">D</div>
+    <div class="key" onclick="sendKey('E')">E</div>
+    <div class="key" onclick="sendKey('F')">F</div>
+    <div class="key" onclick="sendKey('G')">G</div>
+    <div class="key" onclick="sendKey('H')">H</div>
+    <div class="key" onclick="sendKey('I')">I</div>
+    <div class="key" onclick="sendKey('J')">J</div>
+</div>
+
+<script>
+function sendKey(key) {
+    fetch("/key", {
+        method: "POST",
+        headers: {
+            "Content-Type": "text/plain"
+        },
+        body: key
+    })
+    .then(res => console.log("Sent:", key))
+    .catch(err => console.log("Error:", err));
+}
+</script>
+
+</body>
+</html>
