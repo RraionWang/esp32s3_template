@@ -138,7 +138,7 @@ void wifi_init_sta(void)
     }
 }
 
-void app_main(void)
+void init_wifi_station(void)
 {
     //Initialize NVS
     esp_err_t ret = nvs_flash_init();
@@ -157,3 +157,6 @@ void app_main(void)
     ESP_LOGI(TAG, "ESP_WIFI_MODE_STA");
     wifi_init_sta();
 }
+
+
+
